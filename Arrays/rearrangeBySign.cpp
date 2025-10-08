@@ -1,5 +1,7 @@
 #include<iostream>
 using namespace std;
+//time=O(n+n/2)
+//space=O(n)-->O(n/2)+O(n/2)
 void rearrange_by_sign_brute(vector<int> arr,int n){
     vector<int> pos;
     vector<int> neg;
@@ -21,7 +23,8 @@ void rearrange_by_sign_brute(vector<int> arr,int n){
     cout<<endl;
 
 }
-
+//time=O(n)
+//space=O(n)
 void rearrange_by_sign_optimal(vector<int> arr,int n){
     vector<int> ans(n,0);
     int posIndex=0,negIndex=1;
