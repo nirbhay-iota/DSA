@@ -73,6 +73,44 @@ void set_matrix_zero_better(vector<vector<int>> nums,int n,int m){
     }
     cout<<endl;
 }
+
+//The minimum travesrsal complexity we need to tranverse a 2D array is n^2 only...so we cannot optimise it 
+// further on the basis of time complexity...so we now only have to focus on space complexity
+//time=O(3*n^2)
+//space=O(1)
+void set_matrix_zero_optimal(vector<vector<int>> nums,int n,int m){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(nums[i][j]==0){
+                nums[i][0]=-1;
+                nums[0][j]=-1;
+            }
+        }
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(nums[i][0]== -1 || nums[0][j]==-1){
+                nums[i][j]=-1;
+            }
+        }
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(nums[i][j]!=1){
+                nums[i][j]=0;
+            }
+        }
+    }
+    cout<<"Answer array using optimal approach:"<<endl;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cout<<nums[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
 int main(){
     cout<<"Enter number of rows and columns: ";
     int n,m;
@@ -95,5 +133,6 @@ int main(){
     cout<<endl;
     set_matrix_zero_brute(nums,n,m);
     set_matrix_zero_better(nums,n,m);
+    set_matrix_zero_optimal(nums,n,m);
 
 }
