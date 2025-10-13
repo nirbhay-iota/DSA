@@ -76,31 +76,44 @@ void set_matrix_zero_better(vector<vector<int>> nums,int n,int m){
 
 //The minimum travesrsal complexity we need to tranverse a 2D array is n^2 only...so we cannot optimise it 
 // further on the basis of time complexity...so we now only have to focus on space complexity
-//time=O(3*n^2)
+//time=O(2*n^2)
 //space=O(1)
 void set_matrix_zero_optimal(vector<vector<int>> nums,int n,int m){
+   // vector<int> row(n,0); --> nums[i][0]
+    // vector<int> col(m,0); --> nums[0][j]
+    int col0=1;
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
             if(nums[i][j]==0){
-                nums[i][0]=-1;
-                nums[0][j]=-1;
+                nums[i][0]=0;
+                if(j!=0){
+                nums[0][j]=0;
+                }
+                else
+                col0=0;
             }
         }
     }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            if(nums[i][0]== -1 || nums[0][j]==-1){
-                nums[i][j]=-1;
-            }
-        }
-    }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            if(nums[i][j]!=1){
+    //Now at first we have to ignore the row and column that we are using to mark as if we 
+    //change them right now...it can cause wrong marking for other elements
+    for(int i=1;i<n;i++){
+        for(int j=1;j<m;j++){
+            if(nums[i][0]== 0 || nums[0][j]== 0){
                 nums[i][j]=0;
             }
         }
     }
+    if(nums[0][0]==0){
+        for(int j=0;j<m;j++){
+            nums[0][j]=0;
+        }
+    }
+    if(col0==0){
+        for(int i=0;i<n;i++){
+            nums[i][0]=0;
+        }
+    }
+    
     cout<<"Answer array using optimal approach:"<<endl;
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
