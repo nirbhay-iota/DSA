@@ -23,19 +23,37 @@ void rotate_by_90_brute(vector<vector<int>> nums){
     cout<<endl;
 }
 
-void rotate_by_90_better(vector<vector<int>> nums){
+//time=O(n^2)
+//space=O(1)
+void rotate_by_90_optimal(vector<vector<int>> nums){
     int n=nums.size();
     int m=nums[0].size();
     //we will take transpose first: Intuition made when we saw that the first column became first row
     //and the second column become second row in the reversed order
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            if(i!=j){
-                swap(nums[i][j],nums[j][i]);
-            }
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<m;j++){
+    //         if(i!=j){
+    //             swap(nums[i][j],nums[j][i]);    //this was a BS idea as 
+    //         }
+    //     }
+    // }
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            swap(nums[i][j],nums[j][i]);
         }
     }
-    
+    //the we will just reverse all the rows one by one
+    for(int i=0;i<n;i++){
+        reverse(nums[i].begin(),nums[i].end());
+    }
+    cout<<"Answer array using optimal approach:"<<endl;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cout<<nums[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
 }
 int main(){
 cout<<"Enter number of rows and columns: ";
@@ -58,4 +76,5 @@ cout<<"Enter number of rows and columns: ";
     }
     cout<<endl;
     rotate_by_90_brute(nums);
+    rotate_by_90_optimal(nums);
 }
