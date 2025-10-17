@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 //The brute force will be obviously just a normal merge sort 
-//time comp=O(2n)...one n for the counters and the other for the 3 for loops which run for n times
+//time comp=O(2n)...one n for counters and the other for the 3 for loops which run for n times
 //space=O(1)
 void sort_array_better(vector<int> arr,int n){
     int cnt0=0,cnt1=0,cnt2=0;
