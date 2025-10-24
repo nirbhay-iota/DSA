@@ -1,5 +1,7 @@
 #include<iostream>
 using namespace std;
+
+//time comp=O(n^2)
 void check_sorted_array_brute(int arr[],int n){
     int counter=0;
     for (int i=1;i<=n-1;i++){
