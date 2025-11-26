@@ -29,14 +29,21 @@ int upperbound(vector<int> &nums,int target){
             low=mid+1;
         }
     }
-    if(ans==-1) return -1;
+    if(ans==-1){
+        if(nums.empty()==false && nums.back()==target) return nums.size()-1;
+        return -1;
+    }
     return ans-1;
 }
 
 void first_and_last_occurence(vector<int> &nums,int target){
     int first=lowerbound(nums,target),last=upperbound(nums,target);
-
-    cout<<"The First and last occurences are: ["<<first<<","<<last<<"]"<<endl;
+    if(nums[first]!=target){
+        cout<<"The First and last occurences are: ["<<-1<<","<<-1<<"]"<<endl;
+    }
+    else{
+        cout<<"The First and last occurences are: ["<<first<<","<<last<<"]"<<endl;
+    }
     
 }
 
