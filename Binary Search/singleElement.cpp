@@ -3,11 +3,11 @@
 using namespace std;
 void single_element(vector<int> nums){
     if(nums.size()==1) {
-        cout<<"The single element is:"<<nums[0]<<endl;
+        cout<<"The single element is: "<<nums[0]<<endl;
         return;
     }
     if(nums[0]!=nums[1]){
-        cout<<"The single element is:"<<nums[0]<<endl;
+        cout<<"The single element is: "<<nums[0]<<endl;
         return;
     }
     if(nums[nums.size()-1]!=nums[nums.size()-2]){
