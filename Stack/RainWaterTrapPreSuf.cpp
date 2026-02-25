@@ -15,9 +15,10 @@ public:
             suffix[i]=largest;
         }
         for(int i=0;i<height.size();i++){
-            if(prefix[i]>=suffix[i]){
-                ans=(prefix[i]-suffix[i])*height[i]
-            }
+
+            ans+=min(prefix[i],suffix[i])-height[i]; 
+
         }
+        return ans;
     }
 };
